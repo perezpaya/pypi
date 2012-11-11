@@ -24,21 +24,22 @@ def pi(digits):
 
 
 
-def cronometro(funcion):
-   def funcion_a_ejecutar(*argumentos):
+def cronometer(callback):
+   def callback_timer(*arguments):
       
        inicio = time.time()
        # Lanzamos funcion a ejecutar.
-       ret = funcion(*argumentos)
+       ret = callback(*arguments)
        # Tiempo de fin de ejecucion.
        fin = time.time()
        # Tiempo de ejecucion.
        tiempo_total = fin - inicio
        # Devolvemos el tiempo de ejecucion.
+        tiempo_total += "(s) to compute"
        return tiempo_total
    # Devolvemos la funcion que se ejecuta.
 
-   return funcion_a_ejecutar
+   return callback_timer
 
 
 if len(sys.argv) < 2:
@@ -47,7 +48,7 @@ else:
 
     if isinstance(int(sys.argv[1]),(long,int)):
 
-        print "Searchig "+sys.argv[1]+" decimal digits of pi\n"
-        print cronometro(pi)(int(sys.argv[1]))
+        print "Computing "+sys.argv[1]+" decimal digits of pi\n"
+        print cronometer(pi)(int(sys.argv[1]))
     else:
         print "Please input amount decimal digits"
