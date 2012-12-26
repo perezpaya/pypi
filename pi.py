@@ -19,10 +19,8 @@ def arccot(x, unity):
     return sum
 def pi(digits):
     unity = 10**(digits + 10)
-    pi = 4 * (4*arccot(5, unity) - arccot(239, unity))    
-    print pi // 10**10
-
-
+    pi = 4 * (4*arccot(5, unity) - arccot(239, unity))
+    file('output.txt', 'w').write(str(pi // 10**10))
 
 def cronometer(callback):
    def callback_timer(*arguments):
@@ -34,8 +32,9 @@ def cronometer(callback):
        fin = time.time()
        # Tiempo de ejecucion.
        tiempo_total = fin - inicio
+       tiempo_total = str(tiempo_total)
        # Devolvemos el tiempo de ejecucion.
-        tiempo_total += "(s) to compute"
+       tiempo_total += "(s) to compute"
        return tiempo_total
    # Devolvemos la funcion que se ejecuta.
 
